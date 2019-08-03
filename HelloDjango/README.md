@@ -40,11 +40,13 @@ python3 manage.py runserver 8000
 * app.py 声明应用的地方；
 * tests.py 编写应用测试用例的地方。
 
+
 ## Django Hello World
 在Django 中，每一个应用都是一个Python 包，并且遵循着相同的约定。
 
+
 ### Django 视图与Django 路由
-+ 在blog/views.py 文件中创建hello_world 视图，使其做为Python 包导出
+1. 在blog/views.py 文件中创建hello_world 视图，使其做为Python 包导出
 ```python
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -54,7 +56,8 @@ def hello_world(request) :
     return HttpResponse("Hello Django world")
 ```
 
-+ 应用层次路由配置：在blog/urls.py 文件中声明
+
+2. 应用层次路由配置：在blog/urls.py 文件中声明
 ```python
 from django.urls import path, include
 from . import views
@@ -63,8 +66,10 @@ urlpatterns = [
     path("hello_world", views.hello_world),
 ]
 ```
+函数path() 具有四个参数，两个必须参数：route 和 view，两个可选参数：kwargs 和 name。
 
-+ 项目层次路由配置：在HelloDjango/urls.py 的urlpatterns 列表里插入一个include()
+
+3. 项目层次路由配置：在HelloDjango/urls.py 的urlpatterns 列表里插入一个include()
 ```python
 from django.contrib import admin
 from django.urls import path, include
@@ -79,7 +84,8 @@ urlpatterns = [
 ]
 ```
 
-+ 注册blog app应用：在HelloDjango/settings.py 的INSTALLED_APPS 列表里加入用户自定义的应用
+
+4. 注册blog app应用：在HelloDjango/settings.py 的INSTALLED_APPS 列表里加入用户自定义的应用
 ```python
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -93,3 +99,88 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
 ]
 ```
+
+
+### Django 模型层与Django 数据库
+模型层
+
+模型是真实数据的简单明确的描述。它包含了储存的数据所必要的字段和行为。用户只需要定义数据模型，然后其它的杂七杂八代码会自动从模型生成。
+
+<font color="gray">注：应用Django 完成ORM 时，需要在settings.py 文件中完成时区的设置，并要确保之后操作的所有时间均为UTC+8 ：
+```python
+TIME_ZONE = 'Asia/Shanghai'
+
+USE_TZ = True
+```
+</font>
+
+完整创建一个model 需要以下两步（3步）：
+
+* 编辑models.py 文件，创建（改变）model 类；
+* 运行python3 manage.py makemigrations [应用名称] 为模型的创建（改变）生成迁移文件；
+* 运行python3 manage.py migrate 应用数据库迁移。
+
+
+1. 定义模型
+
+    在blog/models.py 文件中加入以下内容创建模型：
+    ```python
+    # 1、设计模型结构（数据库字段）
+    class Article(models.Model):
+        # 1、设计模型结构；
+        # 2、定义模型层字段类型
+        articel_id = models.AutoField(primary_key = True)
+        title = models.TextField()
+        abstract = models.TextField()
+        content = models.DateTimeField(auto_now = True)
+
+    ```
+
+
+2. 激活模型
+ 
+    激活模型又称为数据库迁移，迁移是Django 对于模型定义（也就是你的数据库结构）的变化的储存形式，能让你在开发过程中持续的改变数据库结构而不需要重新删除和创建表。
+
+    2.1 在HelloDjango/settings.py的的INSTALLED_APPS 列表里注册用户自定义应用：
+    ```python
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+
+        # 用户自定义app
+        'blog.apps.BlogConfig',
+    ]
+    ```
+
+    2.2 完成数据库迁移的生成
+    ```bash
+    python3 manage.py makemigrations blog
+    ```
+    通过运行 makemigrations 命令，Django 会检测你对模型文件的修改（在这种情况下，你已经取得了新的），并且把修改的部分储存为一次  migration。
+
+    <font color="gray">注：
+    
+    使用sqlmigrate 命令查看SQL 语句：
+    ```bash
+    python3 manage.py sqlmigrate blog 0001
+    ```
+    使用check 命令检查项目中的问题：
+    ```bash
+     python3 manage.py check 
+    ```
+    </font>
+
+    2.3 完成数据库迁移的应用
+    ```bash
+    python3 manage.py migrate
+    ```
+    migrate 命令选中所有还没有执行过的迁移，并应用在数据库上，也就是将你对模型的更改同步到数据库结构上。
+
+
+
+
+
