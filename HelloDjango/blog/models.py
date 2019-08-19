@@ -8,5 +8,6 @@ class Article(models.Model):
     articel_id = models.AutoField(primary_key = True)
     title = models.TextField()
     abstract = models.TextField()
-    content = models.DateTimeField(auto_now = True)
+    content = models.TextField()
+    publish_date = models.DateTimeField(auto_now = True)
 

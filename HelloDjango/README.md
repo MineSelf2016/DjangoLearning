@@ -102,11 +102,29 @@ INSTALLED_APPS = [
 
 
 ### Django 模型层与Django 数据库
-模型层
+<b>模型层</b>
 
 模型是真实数据的简单明确的描述。它包含了储存的数据所必要的字段和行为。用户只需要定义数据模型，然后其它的杂七杂八代码会自动从模型生成。
 
-<font color="gray">注：应用Django 完成ORM 时，需要在settings.py 文件中完成时区的设置，并要确保之后操作的所有时间均为UTC+8 ：
+<b>数据库配置</b>
+在使用ORM 之前，请先确保已正确配置第三方数据库。
+在 projectName/settings.py 文件的DATABASES 字典中完成相关配置：
+    ENGINE -- 可选值有：
+    'django.db.backends.sqlite3'，'django.db.backends.postgresql'，'django.db.backends.mysql'，或 'django.db.backends.oracle'。其他<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/databases/#third-party-notes">可用后端</a>。
+
+    NAME -- 数据库的名称：
+    如果使用的是 SQLite，数据库将是你电脑上的一个文件，在这种情况下， NAME 应该是此文件的绝对路径，包括文件名。默认值 os.path.join(BASE_DIR, 'db.sqlite3') 将会把数据库文件储存在项目的根目录。
+如果你不使用 SQLite，则必须添加一些额外设置，比如<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/settings/#std:setting-USER"> USER </a>、<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/settings/#std:setting-PASSWORD"> PASSWORD </a>、<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/settings/#std:setting-HOST"> HOST </a>等等。想了解更多数据库设置方面的内容，请看文档：<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/settings/#std:setting-DATABASES"> DATABASES </a>。
+
+
+
+<font color="gray">注：应用Django 完成ORM 时，需要确保以下几点的实现：
+
+1、使用SQLite 以外的数据库，请确认在使用前已经<b>创建了数据库</b>；
+
+2、使用SQLite 以外的数据库，确保向该用户提供 "create database" 权限；
+
+3、在settings.py 文件中完成时区的设置，并要确保之后操作的所有时间均为UTC+8 ：
 ```python
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -181,6 +199,12 @@ USE_TZ = True
     migrate 命令选中所有还没有执行过的迁移，并应用在数据库上，也就是将你对模型的更改同步到数据库结构上。
 
 
+### Django shell 与 Django 数据库API
+输入命令
+```
+python3 manage.py shell
+```
+进入shell 交互模式
 
 
 
