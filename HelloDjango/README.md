@@ -235,5 +235,49 @@ from .models import Article
 admin.site.register(Article)
 ```
 
+### Django 视图
+在 Django 中，网页和其他内容都是从视图派生而来。每一个视图表现为一个简单的 Python 函数（或者说方法，如果是在基于类的视图里的话）。Django 将会根据用户请求的 URL 来选择使用哪个视图（更准确的说，是根据 URL 中域名之后的部分）。
+
+#### 占位url
+现在让我们向项目中添加更多视图，用来预先占位url。
+
+1、编写视图函数，blog/views.py ：
+```python
+def index(request):
+    return HttpResponse("您正在浏览首页内容")
+
+
+def content(request, blog_id):
+    # blog_id 以URLConf 中的配置，从url 中截取出
+    return HttpResponse("您正在浏览第%s详情内容" % blog_id)
+
+
+def modify(request, blog_id):
+    return HttpResponse("您正在访问第%s修改界面" % blog_id)
+
+
+```
+
+2、注册应用级别路由，blog/urls.py：
+```python
+urlpatterns = [
+    path("", views.index, name = "index"),
+    path("<int:blog_id>/content", views.content, name = "content"),
+    path("<int:blog_id>/modify", views.modify, name = "modify"),
+    path("hello_world", views.hello_world, name = "hello_world"),
+]
+```
+
+3、注册项目级别路由，方法同上；
+
+4、注册应用至项目，方法同上。
+
+
+#### static页面开发
+1、在blog/ 目录下新建目录 templates，并新建index.html 文件；
+
+2、在index.html 页面中使用bootstrap 编写静态页面；
+
+3、浏览器中预览页面效果。
 
 
