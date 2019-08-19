@@ -11,3 +11,6 @@ class Article(models.Model):
     content = models.TextField()
     publish_date = models.DateTimeField(auto_now = True)
 
+    def __str__(self):
+        # admin 页面展示时的字段内容
+        return self.title

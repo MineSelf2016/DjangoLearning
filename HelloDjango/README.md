@@ -200,11 +200,40 @@ USE_TZ = True
 
 
 ### Django shell 与 Django 数据库API
+为什么需要Django shell：
+1、临时性操作使用Django Shell 更加方便；
+
+2、小范围Debug 更简单，不需要运行整个项目来测试；
+
+方便开发，方便调试，方便debug。
+
 输入命令
 ```
 python3 manage.py shell
 ```
 进入shell 交互模式
+
+阅读 <a href="https://docs.djangoproject.com/zh-hans/2.1/ref/models/relations/">访问关系对象</a> 文档可以获取关于数据库关系的更多内容。想知道关于双下划线的更多用法，参见 <a href="https://docs.djangoproject.com/zh-hans/2.1/topics/db/queries/#field-lookups-intro">查找字段</a> 文档。数据库API的所有细节可以在 <a href="https://docs.djangoproject.com/zh-hans/2.1/topics/db/queries/">数据库 API 参考</a> 文档中找到。
+
+
+### Django Admin 模块
+Django Admin模块是Django 的后台管理工具，可以读取开发者定义的模型元数据，并提供强大的管理使用页面。
+
+使用Admin 模块步骤：
+    1. 创建管理员用户：
+        1.1 命令 python3 manage.py createsuperuser;
+        1.2 输入 username、email（可选）、password、password；
+    2. 登录管理员页面：
+        2.1 命令 python3 manage.py runserver;
+        2.2 入口地址 127.0.0.1:8000/admin;
+
+注册用户自定义模型：
+在blog/admin.py 文件中，声明以下内容
+```python
+# Register your models here.
+from .models import Article
+admin.site.register(Article)
+```
 
 
 
