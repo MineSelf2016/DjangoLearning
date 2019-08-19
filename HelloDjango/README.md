@@ -158,7 +158,7 @@ USE_TZ = True
 
     2.2 完成数据库迁移的生成
     ```bash
-    python3 manage.py makemigrations blog
+    python3 manage.py makemigrations [应用名称]
     ```
     通过运行 makemigrations 命令，Django 会检测你对模型文件的修改（在这种情况下，你已经取得了新的），并且把修改的部分储存为一次  migration。
 
@@ -166,7 +166,7 @@ USE_TZ = True
     
     使用sqlmigrate 命令查看SQL 语句：
     ```bash
-    python3 manage.py sqlmigrate blog 0001
+    python3 manage.py sqlmigrate [应用名称] 0001
     ```
     使用check 命令检查项目中的问题：
     ```bash
