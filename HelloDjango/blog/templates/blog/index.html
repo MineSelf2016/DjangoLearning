@@ -21,15 +21,18 @@
 
         <div class="col-md-9" role="main"> 
             {% for article in article_list %}
-            <div class="h2">{{ article.title }}</div>
-            <div class="p">{{ article.content }}</div>
+            <a href="/blog/{{article.article_id}}/detail">
+                <div class="h2">{{ article.title }}</div>
+            </a>
+                <div class="p">{{ article.brief_content }}</div>
             {% endfor %}
         </div>
 
         <div class="col-md-3" role="complementary">
+            <div class="h2">最新文章</div>
             <div class="list-group">
                 {% for article in article_list %}
-                    <a href="#" class="list-group-item">{{ article.title }}</a>
+                    <a href="/blog/{{article.article_id}}/detail" class="list-group-item">{{ article.title }}</a>
                 {% endfor %}
             </div>
         </div>

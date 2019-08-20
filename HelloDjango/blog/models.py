@@ -5,9 +5,9 @@ from django.db import models
 class Article(models.Model):
     # 1、设计模型结构；
     # 2、定义模型层字段类型
-    articel_id = models.AutoField(primary_key = True)
+    article_id = models.AutoField(primary_key = True)
     title = models.TextField()
-    abstract = models.TextField()
+    brief_content = models.TextField()
     content = models.TextField()
     publish_date = models.DateTimeField(auto_now = True)
 
