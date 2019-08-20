@@ -274,10 +274,75 @@ urlpatterns = [
 
 
 #### static页面开发
-1、在blog/ 目录下新建目录 templates，并新建index.html 文件；
+1、在blog/ 目录下新建目录 templates，在templates/下新建blog/ 目录，在blog/ 目录下新建index.html 文件；
 
 2、在index.html 页面中使用bootstrap 编写静态页面；
 
 3、浏览器中预览页面效果。
+
+
+#### 模板系统
+1、模板系统简介：
+模板系统的表现形式为文本文件；
+用于分离网页的内容与表现；
+模板系统预定义了特有的标签占位符。
+
+使用模板系统的原因：
+    <ul>
+        <li>views.py 文件不适合编码HTML；
+        <li>页面设计的改变需要修改python 代码；
+        <li>网页展示与网页逻辑应分开。
+    </ul>
+
+
+2、模板系统语法：
+变量标签：
+```python
+    {{ 变量 }} ；
+```
+
+for 循环标签：
+```python
+<ul>
+    {% for item in list %}
+        <li> {{ item }}
+    {% endfor %}
+</ul>
+```
+
+if-else 分支标签：
+```python
+    {% if true %}
+        <p>it's a true part.
+    {% else %}
+        <p>it's a false part.
+    {% endif %}
+```
+
+
+3、模板系统用法：
+3.1 在项目应用目录blog/ 下创建 templates 目录。Django 将会在这个目录里查找模板文件；<br>
+3.2 在templates 目录下新建blog/ 目录，在blog/ 目录下新建index.html、detail.html ......文件；<br>
+3.3 使用预定义标签编写模板文件，index.html：
+```html
+    <div class="col-md-9" role="main"> 
+    {% for article in article_list %}
+        <div class="h2">{{ article.title }}</div>
+        <div class="p">{{ article.content }}</div>
+    {% endfor %}
+    </div>
+```
+3.4 在视图views.py 中完成数据的转发：
+```python
+def index(request):
+    article_list = Article.objects.all()
+    context = {
+        "article_list" : article_list
+    }
+    return render(request, "blog/index.html", context)
+```
+
+
+<small>注：在项目的 TEMPLATES 配置项中描述了 Django 如何载入和渲染模板。默认的设置文件设置了 DjangoTemplates 后端，并将 APP_DIRS 设置成了 True。这一选项将会让 DjangoTemplates 在每个 INSTALLED_APPS 文件夹中寻找 "templates" 子目录。</small>
 
 

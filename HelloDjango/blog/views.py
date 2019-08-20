@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Article
 
 # Create your views here.
 
@@ -10,10 +11,14 @@ def hello_world(request) :
 
 
 def index(request):
-    return HttpResponse("您正在浏览首页内容")
+    article_list = Article.objects.all()
+    context = {
+        "article_list" : article_list
+    }
+    return render(request, "blog/index.html", context)
 
 
-def content(request, blog_id):
+def detail(request, blog_id):
     # blog_id 以URLConf 中的配置，从url 中截取出
     return HttpResponse("您正在浏览第%s详情内容" % blog_id)
 
