@@ -219,13 +219,13 @@ python3 manage.py shell
 ### Django Admin 模块
 Django Admin模块是Django 的后台管理工具，可以读取开发者定义的模型元数据，并提供强大的管理使用页面。
 
-使用Admin 模块步骤：
-    1. 创建管理员用户：
-        1.1 命令 python3 manage.py createsuperuser;
-        1.2 输入 username、email（可选）、password、password；
-    2. 登录管理员页面：
-        2.1 命令 python3 manage.py runserver;
-        2.2 入口地址 127.0.0.1:8000/admin;
+使用Admin 模块步骤：<br>
+    1. 创建管理员用户：<br>
+        1.1 命令 python3 manage.py createsuperuser;<br>
+        1.2 输入 username、email（可选）、password、password；<br>
+    2. 登录管理员页面：<br>
+        2.1 命令 python3 manage.py runserver;<br>
+        2.2 入口地址 127.0.0.1:8000/admin;<br>
 
 注册用户自定义模型：
 在blog/admin.py 文件中，声明以下内容
