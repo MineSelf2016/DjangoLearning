@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'rumour/css/index.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'rumour/img/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'rumour/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'rumour/css/line-awesome.css'%}">
+    <title>结果页面</title>
+</head>
+
+<body>
+    <div class="total">
+        <!-- 主面板————标题+搜索框+热门推荐 -->
+        <div class="main">
+            <div class="ic-sear">
+                <!-- <div class="wise">
+                    <a href=""> <span class="zhi">智</span>&nbsp; <span class="zhe"> 者</span> </a>
+                </div> -->
+                <div class="search">
+                    <div class="search2">
+                        <form action="index.html" method="POST" name="biao">
+                            <input type="text" class="content" id="content" name="content">
+                            <i class="la la-file-text-o" title="长文本" onclick="biao.submit()"></i>
+                            <!-- <img src="img/link-2.png" alt="" onclick="biao.submit()"> -->
+                            <i class="la la-link" title="链接" onclick="biao.submit()"></i>
+                            <!-- <img src="img/text.png" alt="" onclick="biao.submit()"> -->
+                            <i class="la la-search" title="短文本" onclick="biao.submit()"></i>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="recommend">
+                <h3> <a href="">预测结果</a> </h3>
+                <div class="cont">
+                    <div class="gauge" style="height: 100%; margin: 0">
+                        <div id="container" style="height: 100%"></div>
+                        <script type="text/javascript">
+                            var dom = document.getElementById("container");
+                            var myChart = echarts.init(dom);
+                            var app = {};
+                            option = null;
+                            option = {
+                                tooltip: {
+                                    formatter: "{a} <br/>{b} : {c}%"
+                                },
+                                toolbox: {
+                                    feature: {
+                                        restore: {},
+                                        saveAsImage: {}
+                                    }
+                                },
+                                series: [
+                                    {
+                                        name: '预测结果',
+                                        type: 'gauge',
+                                        detail: { formatter: '{value}%' },
+                                        axisLine: {            // 坐标轴线  
+                                            lineStyle: {       // 属性lineStyle控制线条样式  
+                                                color: [[0.2, '#c23531'], [0.8, '#63869e'], [1, '#91c7ae']],
+                                                width: 20
+                                            }
+                                        },
+                                        // pointer: { //仪表盘指针
+                                        //     show: true,
+                                        //     length: '60%',
+                                        //     width: 5
+                                        // },
+                                        data: [{ value: 0, name: '可信度' }]
+                                    }
+                                ]
+                            };
+
+                            setInterval(function () {
+                                option.series[0].data[0].value = (50).toFixed(2) - 0;
+                                myChart.setOption(option, true);
+                            }, 2000);
+                            ;
+                            if (option && typeof option === "object") {
+                                myChart.setOption(option, true);
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="feedback" id="feedback">
+                    <button class="btn btn-info feedback-btn" href = "javascript:void(0)" 
+                    onclick = "document.getElementById('feed-info').style.display='block';document.getElementById('feedback').style.display='none'">反&nbsp;&nbsp;馈</button>
+                </div>
+                <div class="feed-info" id="feed-info">
+                    <h4>此预测结果是否准确？</h4>
+                    <button class="btn btn-info btn1" href = "javascript:void(0)" 
+                    onclick = "document.getElementById('feed-info').style.display='none';document.getElementById('feed-thank').style.display='block'">是</button>
+                    <button class="btn btn-info btn2" href = "javascript:void(0)" 
+                    onclick = "document.getElementById('feed-info').style.display='none';document.getElementById('feed-thank').style.display='block'">否</button>
+                </div>
+                <div class="feed-thank" id="feed-thank" >
+                        <h3>感谢您的反馈！</h3>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="footer">
+            <div class="all">
+                <div class="intro">
+                    <h3>何为 <span>智者？</span> </h3>
+                    <p>对用户输入信息进行谣言识别的人工智能应用助手，辅助用户判断信息真假</p>
+                </div>
+                <div class="links">
+                    <span>
+                        <a href="">关于我们</a> |
+                        <a href="">联系我们</a> |
+                        <a href="">意见反馈</a> |
+                        <a href="">责任申明</a> |
+                        <a href="">隐私条款</a>
+                    </span>
+                </div>
+                <div class="app">
+                    <p>扫描下载智者 <span>APP</span> </p>
+                    <img src="img/二维码.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            $(function(){
+                setTimeout(function(){
+                    $("feed-thank").css('display','none');
+                },1000);
+            })
+        </script>
+</body>
+</html>

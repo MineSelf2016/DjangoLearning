@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'rumour/css/index.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'rumour/img/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'rumour/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'rumour/css/line-awesome.css'%}">
+    <title>智者首页</title>
+</head>
+<body>
+    <div class="total">
+        <!-- 主面板————标题+搜索框+热门推荐 -->
+        <div class="main">
+            <div class="ic-sear">
+                <div class="wise">
+                    <a href=""> <span class="zhi">智</span>&nbsp; <span class="zhe"> 者</span> </a>
+                </div>
+                <div class="search">
+                    <div class="search2">
+                        <form action="result.html" method="POST" name="biao">
+                            <input type="text" class="content" id="content" name="content">
+                            <!-- <img src="img/file.png" alt="" onclick="biao.submit()"> -->
+                            <i class="la la-file-text-o" title="长文本" onclick="biao.submit()"></i>
+                            <!-- <img src="img/link-2.png" alt="" onclick="biao.submit()"> -->
+                            <i class="la la-link" title="链接" onclick="biao.submit()"></i>
+                            <!-- <img src="img/text.png" alt="" onclick="biao.submit()"> -->
+                            <i class="la la-search" title="短文本" onclick="biao.submit()"></i>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="recommend">
+                <div class="div-rec" id="div-rec">
+                    <h3>
+                        <a href="javascript:void(0)" id="a-rec" ;
+                            onclick="document.getElementById('cont-reco').style.display='block';document.getElementById('cont-cue').style.display='none';document.getElementById('a-cue').style.color='#A9A9A9';document.getElementById('a-cue').style.borderBottomColor='#A9A9A9';document.getElementById('a-rec').style.color='#61B0FF';document.getElementById('a-rec').style.borderBottomColor='#61B0FF';">热门推荐</a>
+                    </h3>
+                </div>
+                <div class="div-cue" id="div-cue">
+                    <h3>
+                        <a href="javascript:void(0)" id="a-cue" ;
+                            onclick="document.getElementById('cont-reco').style.display='none';document.getElementById('cont-cue').style.display='block';document.getElementById('a-cue').style.color='#61B0FF';document.getElementById('a-cue').style.borderBottomColor='#61B0FF';document.getElementById('a-rec').style.color='#A9A9A9';document.getElementById('a-rec').style.borderBottomColor='#A9A9A9';">谣言线索</a>
+                    </h3>
+                </div>
+
+                <div class="cont cont-reco" id="cont-reco">
+                    <ul class="ul1">
+                        <li><a href="" class="col-md-6">核电站泄漏</a><a href="" class="col-md-6">赵本山去世</a></li>
+
+                        <li><a href="" class="col-md-6">高考答题卡掉包</a><a href="" class="col-md-6">德阳安医生自杀</a></li>
+
+                        <li><a href="" class="col-md-6">快递小哥雨中爆哭</a><a href="" class="col-md-6">重庆公交车坠江</a></li>
+                    </ul>
+                </div>
+                <div class="cont cont-cue" id="cont-cue">
+                    <ul class="ul2">
+                        <h5>1.请保证提交内容的客观、真实，并对此承担相应的法律责任。</h5>
+                        <h5 class="h5-2">2.请按照提示清晰、完整地填写相关内容，并允许本平台根据工作需要，在保护您个人权益的前提下，使用您的任何叙述。</h5>
+                        <h5 class="h5-3">3.请如实填写您的联系方式，以便核实相关情况，您的个人信息将被严格保密。</h5>
+                        <button class="btn btn-info cue-btn" onclick="window.location.href='form.html'">开始填写</button>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="all">
+                <div class="intro">
+                    <h3>何为 <span>智者？</span> </h3>
+                    <p>对用户输入信息进行谣言识别的人工智能应用助手，辅助用户判断信息真假</p>
+                </div>
+                <div class="links">
+                    <span>
+                        <a href="">关于我们</a> |
+                        <a href="">联系我们</a> |
+                        <a href="">意见反馈</a> |
+                        <a href="">责任申明</a> |
+                        <a href="">隐私条款</a>
+                    </span>
+                </div>
+                <div class="app">
+                    <p>扫描下载智者 <span>APP</span> </p>
+                    <img src="img/二维码.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

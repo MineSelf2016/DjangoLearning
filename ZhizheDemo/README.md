@@ -4,3 +4,7 @@
     <li>Qi Cong
     <li>Zhe Ying Huang
 </ul>
+
+## 项目搭建
+应用：rumour
+

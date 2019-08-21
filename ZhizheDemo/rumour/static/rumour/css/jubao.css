@@ -1,0 +1,525 @@
+* {
+    font-family: "微软雅黑";
+}
+
+.content {
+    width: 1065px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/*banner*/
+.banner {
+    width: 100%;
+    height: 450px;
+    background: url(http://www.piyao.org.cn/index/images/banner.png) 50% 0 no-repeat;
+    position: relative;
+}
+
+.sousuo input {
+    float: left;
+    display: block;
+    width: 146px;
+    height: 30px;
+    font-size: 14px;
+    color: #fff;
+    background: none;
+    border: 1px solid #3d5572;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-left: 850px;
+    border-radius: 5px
+}
+
+.sousuo .img {
+    float: left;
+    margin-top: 30px;
+    margin-left: 5px;
+    width: 42px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.ewm {
+    position: absolute;
+    right: 50%;
+    margin-right: -680px;
+    top: 250px;
+}
+
+/*END*/
+/*导航*/
+.nav_box {
+    width: 100%;
+    height: 63px;
+    background: url(http://www.piyao.org.cn/index/images/nav_bj.jpg) 50% 0 no-repeat;
+}
+
+.nav_list {
+    list-style: none;
+}
+
+.nav_list li {
+    float: left;
+    height: 25px;
+    border-right: 1px solid #5671b3;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 20px;
+    padding: 0px 13px 0 13px;
+}
+
+.nav_list li a {
+    color: #fff;
+}
+
+.nav_list li a:hover {
+    border-bottom: 2px solid #388de1;
+    padding-bottom: 8px;
+}
+
+.nav_list li.nobor {
+    border: none;
+}
+
+/*END*/
+/*footer*/
+.footer {
+    width: 100%;
+    height: auto;
+    background: #2f3b49;
+    overflow: hidden;
+    padding: 30px 0 15px 0;
+    margin-top: 50px;
+}
+
+.footer p {
+    text-align: center;
+    font-size: 12px;
+    color: #77879b;
+    margin-bottom: 15px;
+}
+
+.footer p span {
+    color: #77879b;
+    padding: 0 15px 0 15px;
+}
+
+.footer p span a {
+    color: #77879b;
+}
+
+/*END*/
+.xh-fall-fallTitle {
+    border-bottom: 1px solid #d8d8d8;
+    overflow: hidden;
+    margin: 0px 0;
+}
+
+.xh-fall-fallTitle h2 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 50px;
+    float: left;
+    border-bottom: 3px solid #61B0FF;
+    padding: 0 10px;
+    /* color: #A9A9A9; */
+}
+
+/*举报须知*/
+.part1 {
+    width: 853px;
+    height: 595px;
+    border: 1px solid #e5e5e5;
+    padding: 0 105px 0 105px;
+}
+
+.part1 h2 {
+    font-size: 30px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 55px;
+}
+
+.part1 p {
+    font-size: 18px;
+    color: #333;
+    margin-top: 13px;
+}
+
+.nextTep {
+    width: 207px;
+    height: 58px;
+    margin: 0 auto;
+    padding: 120px 0 90px 0;
+    cursor: pointer;
+}
+
+/*END*/
+/*举报提交*/
+.part2 {
+    width: 100%;
+    height: 1253px;
+    background: url(../img/1.png);
+    overflow: hidden;
+    /* border:1px solid #1e83ef; */
+}
+
+.tj_box {
+    width: 705px;
+    height: 1096px;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 80px;
+    border:1px solid #61B0FF;
+    box-shadow:0 1px 6px 0 rgba(32,33,36,0.28);
+}
+
+.tj_con {
+    width: 620px;
+    height: 935px;
+    overflow: hidden;
+    border:2px solid rgb(129, 192, 255);
+    box-shadow:0 1px 6px 0 rgba(32,33,36,0.28);    margin: 0 auto;
+    margin-top: 40px;
+    border-radius: 20px;
+    /* border:1px solid #1e83ef; */
+}
+
+.bt {
+    border-bottom: 1px solid #61B0FF;
+    overflow: hidden;
+}
+
+.bt p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: 10px;
+}
+
+.bt textarea {
+    float: left;
+    width: 500px;
+    height: 25px;
+    margin-top: 35px;
+    resize: none;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    font-size: 16px;
+    color: #666;
+    text-align: left;
+}
+
+.dy {
+    border-bottom: 1px solid #61B0FF;
+    overflow: hidden;
+}
+
+.dy p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.selt1 {
+    float: left;
+    margin-left: 9px;
+    width: 100px;
+    height: 18px;
+    margin-top: 15px;
+    border-radius: 6px;
+    border: 1px solid #61B0FF;
+}
+
+.selt2 {
+    float: left;
+    margin-left: 5px;
+    width: 120px;
+    height: 18px;
+    margin-top: 15px;
+    border-radius: 6px;
+    border: 1px solid #61B0FF;
+}
+.selt1:active,.selt1:focus,.selt2:active,.selt2:focus,.selt3:active,.selt3:focus{
+    outline: none;
+}
+i {
+    color: #fc361d;
+    padding-left: 10px;
+    font-size: 22px;
+    float: left;
+    font-style: normal;
+}
+
+.lb {
+    border-bottom: 1px solid #61B0FF;
+    overflow: hidden;
+}
+
+.lb p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.selt3 {
+    float: left;
+    margin-left: 9px;
+    width: 100px;
+    height: 18px;
+    margin-top: 15px;
+    border-radius: 6px;
+    border: 1px solid #61B0FF;
+
+}
+
+.nr {
+    border-bottom: 1px solid #61B0FF;
+    overflow: hidden;
+}
+
+.nr p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+.nr textarea {
+    width: 560px;
+    height: 200px;
+    margin-left: 35px;
+    resize: none;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    font-size: 16px;
+    color: #666;
+}
+
+.lj {
+    border-bottom: 1px solid #61B0FF;
+    overflow: hidden;
+}
+
+.lj p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+.lj textarea {
+    float: left;
+    width: 500px;
+    height: 25px;
+    margin-top: 15px;
+    resize: none;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    font-size: 16px;
+    color: #666;
+}
+
+.bq {
+    border-bottom: 1px solid #61B0FF;
+    overflow: hidden;
+}
+
+.bq p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+.bq textarea {
+    float: left;
+    width: 500px;
+    height: 25px;
+    margin-top: 15px;
+    resize: none;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    font-size: 16px;
+    color: #666;
+}
+
+.tjfj {
+    border-bottom: 1px solid #61B0FF;
+    overflow: hidden;
+}
+
+.tjfj p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    margin-top: 18px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+.tjfj input {
+    /* float: left; */
+    width: 255px;
+    height: 28px;
+    margin-top: 19px;
+    padding-top: 1px;
+    font-size: 14px;
+    color: #666;
+    border-radius: 3px;
+}
+
+.tjfj .img {
+    float: left;
+    width: 69px;
+    height: 24px;
+    margin-top: 18px;
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.tjfj .txt {
+    font-size: 12px;
+    color: #4e4e4e;
+    margin: 3px 0 11px 80px;
+}
+
+.shoj {
+    float: left;
+    width: 275px;
+    height: 40px;
+    border: 1px solid #c4c7cb;
+    border-radius: 3px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.sjh p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+.shoj p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    line-height: 40px;
+    margin-left: 8px;
+}
+
+.shoj input {
+    float: left;
+    width: 155px;
+    height: 28px;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #666;
+    border: none;
+}
+
+.shoj i {
+    line-height: 40px;
+}
+
+.yzm {
+    float: left;
+    width: 275px;
+    height: 40px;
+    border: 1px solid #c4c7cb;
+    border-radius: 3px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.yzm p {
+    float: left;
+    font-size: 18px;
+    color: #666;
+    line-height: 40px;
+    margin-left: 8px;
+}
+
+.yzm input {
+    float: left;
+    width: 70px;
+    height: 28px;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #666;
+    border: none;
+}
+
+.yzm i {
+    line-height: 40px;
+}
+
+.yzm .img {
+    float: left;
+    width: 69px;
+    height: 24px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.submit {
+    /* width: 207px; */
+    height: 58px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+/*END*/
+/*END*/
+.part3 {
+    width: 628px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.submit-succ {
+    width: 625px;
+    height: 408px;
+    margin-top: 80px;
+    margin-bottom: 110px;
+}
+
+.backreport {
+    width: 207px;
+    height: 57px;
+    cursor: pointer;
+}
+
+.backindex {
+    width: 207px;
+    height: 57px;
+    cursor: pointer;
+}
+
+/*END*/
