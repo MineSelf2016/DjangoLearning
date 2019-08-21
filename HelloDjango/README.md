@@ -340,9 +340,15 @@ def index(request):
         "article_list" : article_list
     }
     return render(request, "blog/index.html", context)
+
+"""
+    The render() function takes the request object as its first argument, a template name as its second argument and a dictionary as its optional third argument. 
+    It returns an HttpResponse object of the given template rendered with the given context.
+"""
 ```
 
 
 <small>注：在项目的 TEMPLATES 配置项中描述了 Django 如何载入和渲染模板。默认的设置文件设置了 DjangoTemplates 后端，并将 APP_DIRS 设置成了 True。这一选项将会让 DjangoTemplates 在每个 INSTALLED_APPS 文件夹中寻找 "templates" 子目录。</small>
+
 
 

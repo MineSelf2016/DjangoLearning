@@ -20,5 +20,14 @@
             <p>{{ section }}</p>
         {% endfor %}
     </div>
+
+    <div>
+        <nav aria-label="...">
+            <ul class="pager">
+              <li><a href="/blog/{{ previous_article.article_id }}/detail">上一篇：{{ previous_article.title }}</a></li>
+              <li><a href="/blog/{{ next_article.article_id }}/detail">下一篇：{{ next_article.title }}</a></li>
+            </ul>
+        </nav>
+    </div>
 </body>
 </html>

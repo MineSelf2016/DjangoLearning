@@ -26,12 +26,30 @@
             </a>
                 <div class="p">{{ article.brief_content }}</div>
             {% endfor %}
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                  <li>
+                    <a href="/blog?page={{ previous_page }}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  {% for num in page_num %}
+                  <li><a href="/blog?page={{ num }}">{{ num }}</a></li>
+                  {% endfor %}
+                  <li>
+                    <a href="/blog?page={{ next_page }}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
         </div>
 
         <div class="col-md-3" role="complementary">
             <div class="h2">最新文章</div>
             <div class="list-group">
-                {% for article in article_list %}
+                {% for article in top5_article_list %}
                     <a href="/blog/{{article.article_id}}/detail" class="list-group-item">{{ article.title }}</a>
                 {% endfor %}
             </div>
