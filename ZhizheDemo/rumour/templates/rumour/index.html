@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <script src="{% static 'rumour/js/jquery-3.2.1.min.js'%}"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <title>首页</title>
@@ -14,12 +15,72 @@
 <body>
     <div class="page-header">
         <ol>
-            <li class="text-info">首页需要的model对象有：谣言模型，包含谣言内容，谣言类型，谣言长度，提交时间</li>
-            <li class="text-info"></li>
-            <li class="text-info"></li>
-            <li class="text-info"></li>
-            <li class="text-info"></li>
+            <li class="text-info">谣言model 包含的字段</li>
+            <li class="text-info">谣言内容</li>
+            <li class="text-info">谣言来源</li>
+            <li class="text-info">谣言长度</li>
+            <li class="text-info">谣言发布时间</li>
+            <li class="text-info">谣言预测提交时间</li>
+            <li class="text-info">谣言预测概率</li>
+            <li class="text-info">谣言预测类别</li>
+            <li class="text-info">用户是否给予了反馈</li>
+            <li class="text-info">谣言真实类别</li>
         </ol>
     </div>
+
+    <div class="body-main col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-offset-3">
+
+        {% if error_message %}
+        <p>
+            <strong>{{ error_message }}</strong>
+        </p>
+        {% endif %}
+
+        <form class="form-horizontal" action="/rumour/result" method="post">
+            <!-- 在每一个需要提交POST 数据或接受POST 数据的form 表单中都要加入 csrf_token 代码段 -->
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="rumourContent" class="col-sm-2 control-label">谣言内容</label>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="rumourContent" name="rumourContent" placeholder="谣言内容">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rumourSource" class="col-sm-2 control-label">谣言来源</label>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="rumourSource" name="rumourSource" placeholder="谣言来源">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rumourLength" class="col-sm-2 control-label">谣言长度</label>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="rumourLength" name="rumourLength" placeholder="谣言长度">
+                </div>
+            </div>       
+            <div class="form-group">
+                <label for="rumourPublishDate" class="col-sm-2 control-label">谣言发布时间</label>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="rumourPublishDate" name="rumourPublishDate" placeholder="谣言发布时间">
+                </div>
+            </div>   
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                        <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>    
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>     
+        </form>   
+    </div>
+    
+    
+
 </body>
 </html>
