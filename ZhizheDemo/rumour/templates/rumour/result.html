@@ -105,7 +105,7 @@
         };
 
         setInterval(function () {
-            option.series[0].data[0].value = {{ rumour_prob }}.toFixed(2) - 0;
+            option.series[0].data[0].value = ({{ rumour_prob }} * 100).toFixed(2) - 0;
             myChart.setOption(option, true);
         }, 1000);
         // if (option && typeof option === "object") {
