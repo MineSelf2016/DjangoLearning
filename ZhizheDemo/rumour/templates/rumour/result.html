@@ -12,7 +12,8 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
     </script>
     <link rel="stylesheet" href="{% static 'rumour/css/result.css' %}">
     <link rel="stylesheet" href="{% static 'rumour/css/line-awesome.css' %}">
@@ -35,14 +36,18 @@
             <div class="text-muted">刚刚用户提交的谣言文本是：<br>
                 <p class="text-primary">{{ rumour_content }}</strong>
             </div>
-            <p>预测结果是：<br>
-                <strong style="color:black">{{ rumour_prob }}</strong><br>
-                <strong style="color:black">{{ rumour_prob_str }}</strong>
-            </p>
         </div>
 
+        <div class="col-md-offset-3 col-xs-6 col-sm-6 col-md-6 col-lg-6 result">
+                <p>预测结果是：<br>
+                    <strong style="color:black">{{ rumour_prob }}</strong><br>
+                    <strong style="color:black">{{ rumour_prob_str }}</strong>
+                </p>
+        </div>
 
-        <div>
+        <div class="col-md-offset-3 col-xs-6 col-sm-6 col-md-6 col-lg-6" id="resultChart" ></div>
+
+        <div class="col-md-offset-3 col-xs-6 col-sm-6 col-md-6 col-lg-6 result">
             此结果是否准确：<br>
             <button type="button" class="btn btn-success" id="correct">准确</button>
             <button type="button" class="btn btn-danger" id="error">错误</button>
@@ -62,6 +67,50 @@
         oErrorButton.onclick = function () {
             alert("感谢您给予的错误反馈")
         }
+    </script>
+
+    <script type="text/javascript">
+        var dom = document.getElementById("resultChart");
+        var myChart = echarts.init(dom);
+        option = null;
+        option = {
+            tooltip: {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+                feature: {
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            series: [
+                {
+                    name: '预测结果',
+                    type: 'gauge',
+                    detail: { formatter: '{value}%' },
+                    axisLine: {            // 坐标轴线  
+                        lineStyle: {       // 属性lineStyle控制线条样式  
+                            color: [[0.2, '#c23531'], [0.8, '#63869e'], [1, '#91c7ae']],
+                            width: 20
+                        }
+                    },
+                    // pointer: { //仪表盘指针
+                    //     show: true,
+                    //     length: '60%',
+                    //     width: 5
+                    // },
+                    data: [{ value: 0, name: '谣言概率' }]
+                }
+            ]
+        };
+
+        setInterval(function () {
+            option.series[0].data[0].value = {{ rumour_prob }}.toFixed(2) - 0;
+            myChart.setOption(option, true);
+        }, 1000);
+        // if (option && typeof option === "object") {
+        //     myChart.setOption(option, true);
+        // }
     </script>
 </body>
 

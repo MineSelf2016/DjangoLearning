@@ -35,7 +35,7 @@ def result(request):
         }
         return render(request, "rumour/index.html", context)
     else:
-        rumour_prob = 0.6
+        rumour_prob = 0.987 * 100
         rumour_prob_str = "有较大可能性是谣言"
         context = {
             "rumour_content" : rumour_content,
