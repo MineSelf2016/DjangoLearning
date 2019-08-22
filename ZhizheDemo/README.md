@@ -64,7 +64,21 @@ fr.close()
     rumour_prob = svm_clf.predict_proba(vv)[0]
 ```
 
-完成 admin 端开发，可管理数据模型。
+### 完成model 层开发，实现数据持久化
+rumour/models.py:
+```python
+# Create your models here.
+class Rumour(models.Model):
+    rumour_id = models.AutoField(primary_key = True)
+    rumour_content = models.TextField()
+    rumour_predicted_label = models.IntegerField()
+    rumour_prediced_prob = models.FloatField()
+    rumour_true_label = models.IntegerField()
+    rumour_submit_date = models.DateTimeField(auto_now = True)
+
+    def __str__(self):
+        return self.rumour_content
+```
 
 完善前端的展示界面，仍使用bootstrap。
 

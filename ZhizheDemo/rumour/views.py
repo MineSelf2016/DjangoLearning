@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Rumour
 import pickle
-import pynlpir
 import jieba
 
 fr = open("rumour/ML_models/vect.pkl", "rb")
@@ -36,6 +36,7 @@ def index(request):
 
 
 def result(request):
+    rumour = Rumour()
     rumour_content = None
     rumour_prob = rumour_predict_label = rumour_true_label = None
     rumour_source = rumour_length = None
@@ -47,6 +48,9 @@ def result(request):
         rumour_source = request.POST["rumourSource"]
         rumour_length = request.POST["rumourLength"]
         rumour_publish_date = request.POST["rumourPublishDate"]
+
+        rumour.rumour_content = rumour_content
+
     except Exception as e:
         context = {
             "error_message" : "Please input necessary field"
@@ -61,15 +65,17 @@ def result(request):
         }
         return render(request, "rumour/index.html", context)
     else:
-        # rumour_content_split = pynlpir_segment(rumour_content, stopwords=stopwords)
         rumour_content_split = jieba_segment(rumour_content, stopwords=stopwords)
-        print("rumour_content_split = ")
-        print(rumour_content_split)
-        vv = vect.transform(["异地 就医 结算"])
-        rumour_prob = svm_clf.predict_proba(vv)[0][0]
-        print("rumour_prob = ", rumour_prob)
+        vv = vect.transform([rumour_content_split])
 
-        # rumour_prob = 0.987 * 100
+        # rumour_prob 取值范围 (0, 1)
+        rumour_prob = svm_clf.predict_proba(vv)[0][0]
+
+        rumour.rumour_predicted_label = 1
+        rumour.rumour_true_label = 1
+        rumour.rumour_prediced_prob = rumour_prob
+        rumour.save()
+
         rumour_prob_str = "有较大可能性是谣言"
         context = {
             "rumour_content" : rumour_content,
