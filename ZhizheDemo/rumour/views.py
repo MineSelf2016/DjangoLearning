@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Rumour
+from django.http import JsonResponse
 import pickle
 import jieba
 
@@ -85,3 +86,7 @@ def result(request):
         return render(request, "rumour/result.html", context)
 
     
+def feedback(request):
+    # 完成ajax 请求数据的返回
+    context = {"title": "Love python and Django", "content": "I am teaching Django"}
+    return JsonResponse(context)

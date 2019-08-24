@@ -64,6 +64,59 @@ fr.close()
     rumour_prob = svm_clf.predict_proba(vv)[0]
 ```
 
+### 完成用户反馈功能，使用Jquery ajax 完成数据交互
+1. 路由设计，rumour/urls.py：
+```python
+urlpatterns = [
+    """
+        ......
+    """
+    path("result/feedback", views.feedback, name = "feedback")
+]
+```
+
+2. jquery ajax，result.html：
+```javascript
+oCorrectButton.click(function (){
+    let payload = {"comment": 1}
+    $.ajax({
+        type: "POST", 
+        url: "/rumour/result/feedback",
+        data: JSON.stringify(payload),
+        headers: { "X-CSRFtoken": $.cookie("csrftoken") },
+        success: function (result) {
+            oFeedbackWrap.fadeOut();
+            oFeedbackFinished.fadeIn();
+            console.log("ajax result = ", result);
+        }
+    })
+})
+```
+注意data 的类型为JSON 对象。
+<font color=red>因为csrf 的存在，故在使用POST 方式提交数据时，务必加入headers 的X-CSRFtoken 属性。</font><br>
+两种写法：
+    1. jquery 方式：$.cookie("csrftoken")，此时需要引用jquery cookie 插件：
+```html
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+```
+    2. Django 模板引擎方式："{{ csrf_token }}"，双引号不能省略。
+
+3. Django 视图层设计，views.py：
+```python
+from django.http import JsonResponse
+```
+需要用到JsonResponse ，首先import 该模块。
+
+ajax 返回数据模块：
+```python
+def feedback(request):
+    # 完成ajax 请求数据的返回
+    context = {"title": "Love python and Django", "content": "I am teaching Django"}
+    return JsonResponse(context)
+```
+
+
+
 ### 完成model 层开发，实现数据持久化
 rumour/models.py:
 ```python
