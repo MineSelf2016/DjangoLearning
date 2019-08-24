@@ -21,3 +21,11 @@ ALLOWED_HOSTS = ["*"]
 nohup python3 manage.py runserver 0.0.0.0:8000 &
 ```
 0.0.0.0 或本机ip 不能省略
+
+<hr>
+
+8月24日：<br>
+1. 谣言model 的完善，可参考相关网站进行设计<br>
+2. 用户反馈页的处理，考虑使用Django ajax 完成开发<br>
+3. AliECS 的git 分支操作，本地为debug 版本，云端为release 版本。<br>
+
