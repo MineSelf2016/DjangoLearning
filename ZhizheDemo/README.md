@@ -82,7 +82,7 @@ oCorrectButton.click(function (){
     $.ajax({
         type: "POST", 
         url: "/rumour/result/feedback",
-        data: JSON.stringify(payload),
+        data: payload,
         headers: { "X-CSRFtoken": $.cookie("csrftoken") },
         success: function (result) {
             oFeedbackWrap.fadeOut();
@@ -92,7 +92,6 @@ oCorrectButton.click(function (){
     })
 })
 ```
-注意data 的类型为JSON 对象。
 <font color=red>因为csrf 的存在，故在使用POST 方式提交数据时，务必加入headers 的X-CSRFtoken 属性。</font><br>
 两种写法：
     1. jquery 方式：$.cookie("csrftoken")，此时需要引用jquery cookie 插件：

@@ -79,6 +79,7 @@ def result(request):
 
         rumour_prob_str = "有较大可能性是谣言"
         context = {
+            "rumour_id" : rumour.rumour_id,
             "rumour_content" : rumour_content,
             "rumour_prob" : rumour_prob,
             "rumour_prob_str" : rumour_prob_str
@@ -88,5 +89,28 @@ def result(request):
     
 def feedback(request):
     # 完成ajax 请求数据的返回
-    context = {"title": "Love python and Django", "content": "I am teaching Django"}
+    # 前端发送参数comment，为1 时，预测正确，为0 时，预测错误
+    comment_str = comment = predicted_prob_str = predicted_prob = rumour_id_str = rumour_id = None
+    context = None
+    try:
+        rumour_id_str = request.POST["rumour_id"]
+        comment_str = request.POST["comment"]
+        predicted_prob_str = request.POST["rumour_prob"]
+    except Exception as e:
+        context = {"errorMsg": "illegal post, there is some params lacked"}
+        return JsonResponse(context)
+    rumour_id = int(rumour_id_str)
+    comment = int(comment_str)
+    predicted_prob = float(predicted_prob_str)
+    print("rumour_id = ", rumour_id)
+    print("comment = ", comment)
+    print("predicted_prob = ", predicted_prob)
+    rumour = Rumour.objects.get(rumour_id = rumour_id)
+    if comment == 1:
+        rumour.rumour_true_label = (1 if (predicted_prob >= 0.5) else 0)
+    else:
+        rumour.rumour_true_label = (0 if (predicted_prob >= 0.5) else 1)
+    print("rumour = ", rumour)
+    rumour.save()
+    context = {"flag": 1}
     return JsonResponse(context)

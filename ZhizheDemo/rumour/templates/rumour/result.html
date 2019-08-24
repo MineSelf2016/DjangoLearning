@@ -40,8 +40,15 @@
         </div>
 
         <div class="col-md-offset-3 col-md-6 result">
-                <p>预测结果是：<br>
-                    <strong style="color:black">{{ rumour_prob }}</strong><br>
+                <p>预测结果是：
+                    {% if rumour_prob >= 0.5 %}
+                    是谣言
+                    {% else %}
+                    不是谣言
+                    {% endif %}
+                    <br>
+                    <strong style="color:black">谣言概率：{{ rumour_prob }}</strong><br>
+                    
                     <strong style="color:black">{{ rumour_prob_str }}</strong>
                 </p>
         </div>
@@ -70,11 +77,11 @@
         let oFeedbackFinished = $("#feedbackFinished");
 
         oCorrectButton.click(function (){
-            let payload = {"comment": 1}
+            let payload = { "rumour_id": {{ rumour_id }}, "comment": 1, "rumour_prob": {{ rumour_prob }} }
             $.ajax({
                 type: "POST", 
                 url: "/rumour/result/feedback",
-                data: JSON.stringify(payload),
+                data: payload,
                 headers: { "X-CSRFtoken": $.cookie("csrftoken") },
                 success: function (result) {
                     oFeedbackWrap.fadeOut();
@@ -92,9 +99,16 @@
                 data: JSON.stringify(payload),
                 headers: { "X-CSRFtoken": $.cookie("csrftoken") },
                 success: function (result) {
+                    // if (result.params.errorMsg) {
+                    //     // do nothing
+                    // }
+                    // else {
+                    //     oFeedbackWrap.fadeOut();
+                    //     oFeedbackFinished.fadeIn();
+                    // }
                     oFeedbackWrap.fadeOut();
                     oFeedbackFinished.fadeIn();
-                    console.log("ajax result = ", reuslt);
+                    console.log("ajax result = ", result);
                 }
             })
         })
