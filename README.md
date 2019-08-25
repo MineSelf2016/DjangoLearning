@@ -29,3 +29,8 @@ nohup python3 manage.py runserver 0.0.0.0:8000 &
 2. 用户反馈页的处理，考虑使用Django ajax 完成开发<br>
 3. AliECS 的git 分支操作，本地为debug 版本，云端为release 版本。<br>
 
+
+<hr>
+
+8月25日：<br>
+1. 完成ali release分支操作
