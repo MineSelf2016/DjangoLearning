@@ -39,6 +39,29 @@ vscode 中F1 键进入command pattle 选择remote connect 与配置完成的remo
 
 配置完成
 
+## zsh 配置
+1. 查看当前shell 环境
+```bash
+$ cat /etc/shells
+$ echo $SHELL
+```
+Linux 的默认shell 是/bin/bash
+
+2. 安装zsh 并升级为oh my zsh
+```bash
+$ yum install zsh
+$ sudo yum install wget
+$ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+3. 更换默认shell 为zsh
+```bash
+$ chsh -s /bin/zsh
+```
+或使用$ chsh 依照步骤完成更改。
+
+4. 重启shell，当前用户shell 环境完成了更改。
+
 ## 远程服务器配置python3、pip3与Django
 1. 至python 官网选择python3 版本，此处选择python3.7 的tar 压缩包；
 
